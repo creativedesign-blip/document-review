@@ -5,7 +5,7 @@ on:
     branches: [ "main", "develop" ]
 
 env:
-  PROJECT_ID: crm-platform-479508
+  PROJECT_ID: reference-lens-479305-g5
   REGION: asia-east1
   BASE_SERVICE: document-review
 
