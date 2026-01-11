@@ -22,7 +22,11 @@ FROM python:3.12-slim AS runtime
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=8080
+    PORT=8080 \
+    # Override config paths for container structure
+    LOCAL_DOCS_DIR=/workspace/app/data/documents \
+    SQLITE_PATH=/workspace/app/data/app.db \
+    MINERU_CACHE_DIR=/workspace/app/data/mineru
 
 # Mirror local structure: /workspace as project root
 WORKDIR /workspace
