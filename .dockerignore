@@ -35,6 +35,9 @@ node_modules
 # Build outputs (will be rebuilt in Docker)
 app/api/www
 app/ui/dist
+
+# Symlinks (actual common/ is copied separately)
+app/api/common
 dist
 build
 
