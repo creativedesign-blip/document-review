@@ -6,7 +6,8 @@ API_DIR = Path(__file__).resolve().parent
 APP_DIR = API_DIR.parent
 ROOT_DIR = APP_DIR.parent  # project root containing `common`
 # Put project roots at the front of sys.path to avoid shadowing by similarly named packages.
-for p in (ROOT_DIR, APP_DIR):
+# Include API_DIR for local modules (services, routers, etc.)
+for p in (ROOT_DIR, APP_DIR, API_DIR):
     p_str = str(p)
     if p_str in sys.path:
         sys.path.remove(p_str)
