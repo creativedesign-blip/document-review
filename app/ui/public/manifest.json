@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "文檔審查",
+  "name": "通用智能文檔審查Agent by Mike",
   "icons": [
     {
       "src": "favicon.ico",
