@@ -369,7 +369,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
       {hideHeader ? compactRuleList : (
         <Card className={classes.panel}>
           <div className={classes.header}>
-            <span className={classes.headerTitle}>審覈規則</span>
+            <span className={classes.headerTitle}>審查規則</span>
             <Button
               size="small"
               appearance="subtle"

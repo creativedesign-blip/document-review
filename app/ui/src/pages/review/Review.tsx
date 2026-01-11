@@ -411,7 +411,7 @@ function Review() {
           ? { label: '需整改', tone: 'danger' as const }
           : processed === total
             ? { label: '可出具結論', tone: 'success' as const }
-            : { label: '審閱中', tone: 'warning' as const }
+            : { label: '審核中', tone: 'warning' as const }
 
     return { total, processed, high, medium, low, conclusion }
   }, [issues])
@@ -645,7 +645,7 @@ function Review() {
           {checkError && (
             <MessageBar intent="error">
               <MessageBarBody>
-                <MessageBarTitle>審覈失敗</MessageBarTitle>
+                <MessageBarTitle>審查失敗</MessageBarTitle>
                 {checkError}
               </MessageBarBody>
             </MessageBar>
@@ -687,7 +687,7 @@ function Review() {
             <span className={classes.zoomInfo}>{Math.round(zoom * 100)}%</span>
             <Button size="small" appearance="subtle" icon={<ZoomInRegular />} onClick={() => setZoom((z) => Math.min(2, +(z + 0.1).toFixed(2)))} />
             <Button size="small" appearance="primary" icon={checkButtonIcon} disabledFocusable={checkInProgress} onClick={() => runCheck(true)}>
-              重新審閱
+              重新審核
             </Button>
             <Button size="small" appearance="secondary" onClick={() => navigate('/')}>
               返回
@@ -735,7 +735,7 @@ function Review() {
       {/* RIGHT */}
       <div className={classes.right}>
         <div className={classes.overviewCard}>
-          <div className={classes.overviewHeader}>審閱概覽</div>
+          <div className={classes.overviewHeader}>審核概覽</div>
           <div className={classes.overviewGrid}>
             <div className={classes.metricItem}>
               <span className={classes.metricLabel}>進度</span>
@@ -767,7 +767,7 @@ function Review() {
             <div className={classes.accordionItem}>
               <div className={classes.accordionHeader} onClick={() => setRulesExpanded(!rulesExpanded)}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  審覈規則
+                  審查規則
                   <Badge appearance="outline" size="small" color="informative">{enabledRuleIds.length}/{totalRulesCount}</Badge>
                 </span>
                 <ChevronDown16Regular className={`${classes.accordionIcon} ${rulesExpanded ? classes.accordionIconOpen : ''}`} />

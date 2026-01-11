@@ -417,7 +417,7 @@ export function IssueDetailsPanel({
           <DialogBody>
             <DialogTitle>不採納原因（可選）</DialogTitle>
             <DialogContent>
-              <Field label="用於改進審閱與規則策略">
+              <Field label="用於改進審核與規則策略">
                 <Textarea
                   className={classes.textareaField}
                   value={feedback?.reason}

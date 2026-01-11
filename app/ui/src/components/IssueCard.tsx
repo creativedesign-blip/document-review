@@ -314,7 +314,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
             feedbackSubmitted && <MessageBar intent="success">
               <MessageBarBody>
                 <MessageBarTitle>反饋已提交</MessageBarTitle>
-                感謝你的反饋，我們會持續改進審閱效果。
+                感謝你的反饋，我們會持續改進審核效果。
               </MessageBarBody>
             </MessageBar>
           }

@@ -215,7 +215,7 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const pageTitle = location.pathname === '/review' ? '智能審閱' : '文檔庫'
+  const pageTitle = location.pathname === '/review' ? '智能審核' : '文檔庫'
 
   return (
     <div className={classes.shell}>
@@ -228,9 +228,9 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
             <div className={classes.brandInfo}>
               <div className={classes.statusRow}>
                 <span className={classes.statusDot} />
-                <span className={classes.brandTitle}>AI 文檔審覈</span>
+                <span className={classes.brandTitle}>AI 文檔審查</span>
               </div>
-              <span className={classes.brandSub}>智能審閱 · 風險識別</span>
+              <span className={classes.brandSub}>智能審核 · 風險識別</span>
             </div>
           </div>
 
@@ -252,7 +252,7 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
                 </Button>
               )}
               <span className={classes.pageTitle}>{pageTitle}</span>
-              <span className={classes.breadcrumbs}>/ 合規審閱中心</span>
+              <span className={classes.breadcrumbs}>/ 合規審核中心</span>
             </div>
             <div className={classes.actions}>
               <Input

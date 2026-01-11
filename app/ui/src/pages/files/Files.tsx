@@ -294,7 +294,7 @@ function Files() {
       <div className={classes.header}>
         <div className={classes.titleWrap}>
           <div className={classes.title}>文檔庫</div>
-          <div className={classes.subtitle}>統一管理審閱任務、問題識別與整改記錄</div>
+          <div className={classes.subtitle}>統一管理審核任務、問題識別與整改記錄</div>
         </div>
         <div className={classes.headerActions}>
           <Button appearance="secondary" icon={<FolderOpenRegular />} onClick={refreshList}>
@@ -366,7 +366,7 @@ function Files() {
             <div className={classes.listTitle}>
               <Text weight="semibold">全部文檔</Text>
               <Text size={200} style={{ color: tokens.colorNeutralForeground3 }}>
-                點擊進入審覈工作臺
+                點擊進入審查工作臺
               </Text>
             </div>
             <Badge appearance="filled" color="informative" shape="rounded">
@@ -380,7 +380,7 @@ function Files() {
                 <SkeletonItem key={i} style={{ height: 120, borderRadius: 10 }} />
               ))}
             {fileList && fileList.length === 0 && (
-              <div className={classes.empty}>暫無文檔，請上傳 PDF 開始審覈</div>
+              <div className={classes.empty}>暫無文檔，請上傳 PDF 開始審查</div>
             )}
             {recentDocs.map((file) => (
               <div key={file.name} className={classes.docCard}>
@@ -418,7 +418,7 @@ function Files() {
             <DialogContent>
               <ProgressBar />
               <div style={{ marginTop: 10, color: tokens.colorNeutralForeground3, fontSize: 12 }}>
-                上傳完成後將自動進入審覈頁面
+                上傳完成後將自動進入審查頁面
               </div>
             </DialogContent>
           </DialogBody>
