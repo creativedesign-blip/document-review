@@ -1,0 +1,28 @@
+DEBUG=True
+SERVE_STATIC=True
+LOG_TO_FILE=False
+LOG_LEVEL=INFO
+
+# Local storage
+LOCAL_DOCS_DIR=./app/data/documents
+SQLITE_PATH=./app/data/app.db
+
+# MinerU
+MINERU_BASE_URL=https://mineru.net
+MINERU_API_KEY=
+MINERU_MODEL_VERSION=vlm
+MINERU_POLL_INTERVAL_SEC=1
+MINERU_MAX_WAIT_SEC=300
+MINERU_CACHE_ARTIFACTS=True
+MINERU_CACHE_DIR=./app/data/mineru
+MINERU_BBOX_ORIGIN=top-left
+MINERU_BBOX_UNITS=auto
+MINERU_BBOX_CONTENT_COVERAGE=0.92
+
+# OpenAI
+OPENAI_API_KEY=
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_MODEL=gpt-5.2
+
+# Pagination (paragraphs per chunk; -1 to disable)
+PAGINATION=32
