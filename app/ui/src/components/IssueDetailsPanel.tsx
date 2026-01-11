@@ -192,7 +192,7 @@ export function IssueDetailsPanel({
     }
   }, [current])
 
-  // 🔧 修复：当 issue 变化时，重置编辑状态
+  // 🔧 修復：當 issue 變化時，重置編輯狀態
   useEffect(() => {
     setModifiedExplanation(undefined)
     setModifiedSuggestedFix(undefined)
@@ -276,7 +276,7 @@ export function IssueDetailsPanel({
   async function runHitlDecision(decision: Record<string, unknown>) {
     if (!current) return
     if (!hitlThreadId) {
-      setHitlError('缺少 thread_id，无法继续。请重新打开编辑窗口。')
+      setHitlError('缺少 thread_id，無法繼續。請重新打開編輯窗口。')
       return
     }
     setHitlLoading(true)
@@ -306,10 +306,10 @@ export function IssueDetailsPanel({
       <div className={classes.wrap}>
         <Card className={classes.panel}>
           <div className={classes.emptyCard}>
-            <div className={classes.emptyTitle}>问题详情</div>
+            <div className={classes.emptyTitle}>問題詳情</div>
             <div className={classes.emptyDesc}>
-              选择左侧问题列表中的项目以查看详情并进行处理。
-              支持采纳建议、不采纳或进行人工复核（HITL）操作。
+              選擇左側問題列表中的項目以查看詳情並進行處理。
+              支持採納建議、不採納或進行人工複覈（HITL）操作。
             </div>
           </div>
         </Card>
@@ -329,7 +329,7 @@ export function IssueDetailsPanel({
           description={
             <div className={classes.headerMeta}>
               <Badge appearance="tint" shape="rounded" color={issueRiskTone(current.type, current.risk_level)}>
-                {issueRiskLevel(current.type, current.risk_level)}风险
+                {issueRiskLevel(current.type, current.risk_level)}風險
               </Badge>
               <Badge appearance="outline" shape="rounded" color="informative">
                 {issueTypeLabel(current.type)}
@@ -345,7 +345,7 @@ export function IssueDetailsPanel({
       {error && (
         <MessageBar intent="error">
           <MessageBarBody>
-            <MessageBarTitle>操作失败</MessageBarTitle>
+            <MessageBarTitle>操作失敗</MessageBarTitle>
             {error}
           </MessageBarBody>
         </MessageBar>
@@ -354,7 +354,7 @@ export function IssueDetailsPanel({
       {/* Form Card */}
       <Card className={classes.panel}>
         <div className={classes.formSection}>
-          <Field label={<span className={classes.fieldLabel}>问题说明</span>}>
+          <Field label={<span className={classes.fieldLabel}>問題說明</span>}>
             <Textarea
               className={classes.textareaField}
               readOnly={!editable}
@@ -364,7 +364,7 @@ export function IssueDetailsPanel({
               resize="vertical"
             />
           </Field>
-          <Field label={<span className={classes.fieldLabel}>修改建议</span>}>
+          <Field label={<span className={classes.fieldLabel}>修改建議</span>}>
             <Textarea
               className={classes.textareaField}
               readOnly={!editable}
@@ -385,7 +385,7 @@ export function IssueDetailsPanel({
               onClick={openHitlEditDialog}
               disabledFocusable={hitlLoading}
             >
-              人工复核
+              人工複覈
             </Button>
             <Button
               size="small"
@@ -395,7 +395,7 @@ export function IssueDetailsPanel({
               onClick={handleDismiss}
               disabledFocusable={dismissing}
             >
-              不采纳
+              不採納
             </Button>
             <Button
               size="small"
@@ -405,7 +405,7 @@ export function IssueDetailsPanel({
               onClick={handleAccept}
               disabledFocusable={accepting}
             >
-              采纳建议
+              採納建議
             </Button>
           </div>
         )}
@@ -415,13 +415,13 @@ export function IssueDetailsPanel({
       <Dialog open={feedbackOpen} onOpenChange={(_, data) => setFeedbackOpen(data.open)}>
         <DialogSurface className={classes.dialogSurface}>
           <DialogBody>
-            <DialogTitle>不采纳原因（可选）</DialogTitle>
+            <DialogTitle>不採納原因（可選）</DialogTitle>
             <DialogContent>
-              <Field label="用于改进审阅与规则策略">
+              <Field label="用於改進審閱與規則策略">
                 <Textarea
                   className={classes.textareaField}
                   value={feedback?.reason}
-                  placeholder="说明为何不采纳该建议，以及更合适的判断方式（可选）…"
+                  placeholder="說明爲何不採納該建議，以及更合適的判斷方式（可選）…"
                   onChange={(e) => setFeedback({ ...feedback, reason: e.target.value })}
                   rows={5}
                 />
@@ -437,7 +437,7 @@ export function IssueDetailsPanel({
                 提交
               </Button>
               <Button appearance="secondary" onClick={() => setFeedbackOpen(false)}>
-                关闭
+                關閉
               </Button>
             </DialogActions>
           </DialogBody>
@@ -448,12 +448,12 @@ export function IssueDetailsPanel({
       <Dialog open={hitlOpen} onOpenChange={(_, data) => setHitlOpen(data.open)}>
         <DialogSurface className={classes.dialogSurface}>
           <DialogBody>
-            <DialogTitle>人工复核确认</DialogTitle>
+            <DialogTitle>人工複覈確認</DialogTitle>
             <DialogContent>
               {hitlError && (
                 <MessageBar intent="error" style={{ marginBottom: 12 }}>
                   <MessageBarBody>
-                    <MessageBarTitle>错误</MessageBarTitle>
+                    <MessageBarTitle>錯誤</MessageBarTitle>
                     {hitlError}
                   </MessageBarBody>
                 </MessageBar>
@@ -465,25 +465,25 @@ export function IssueDetailsPanel({
                 marginBottom: '16px'
               }}>
                 <div style={{ fontSize: '13px', fontWeight: 600, marginBottom: '12px', color: tokens.colorNeutralForeground1 }}>
-                  即将执行的操作
+                  即將執行的操作
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
-                    <span style={{ color: tokens.colorNeutralForeground3 }}>操作类型</span>
-                    <Badge appearance="filled" color="success">采纳建议</Badge>
+                    <span style={{ color: tokens.colorNeutralForeground3 }}>操作類型</span>
+                    <Badge appearance="filled" color="success">採納建議</Badge>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
-                    <span style={{ color: tokens.colorNeutralForeground3 }}>处理人</span>
-                    <span style={{ color: tokens.colorNeutralForeground1 }}>当前用户</span>
+                    <span style={{ color: tokens.colorNeutralForeground3 }}>處理人</span>
+                    <span style={{ color: tokens.colorNeutralForeground1 }}>當前用戶</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
-                    <span style={{ color: tokens.colorNeutralForeground3 }}>处理时间</span>
+                    <span style={{ color: tokens.colorNeutralForeground3 }}>處理時間</span>
                     <span style={{ color: tokens.colorNeutralForeground1 }}>{new Date().toLocaleString()}</span>
                   </div>
                 </div>
               </div>
               <div style={{ fontSize: '12px', color: tokens.colorNeutralForeground3, lineHeight: '1.5' }}>
-                确认后将采纳此问题的修改建议，并标记为已处理。
+                確認後將採納此問題的修改建議，並標記爲已處理。
               </div>
             </DialogContent>
             <DialogActions>
@@ -496,7 +496,7 @@ export function IssueDetailsPanel({
                 icon={hitlLoading ? <Spinner size="tiny" /> : <Checkmark16Regular />}
                 onClick={() => runHitlDecision({ type: 'approve' })}
               >
-                确认执行
+                確認執行
               </Button>
             </DialogActions>
           </DialogBody>

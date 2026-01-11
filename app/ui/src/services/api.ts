@@ -5,12 +5,12 @@ import type { ReviewRule, CreateRuleRequest, UpdateRuleRequest, DocumentRuleAsso
 const apiOrigin = import.meta.env.VITE_API_ORIGIN ?? ''
 const apiBaseUrl = `${apiOrigin}/api/v1/review/`
 const rulesApiUrl = `${apiOrigin}/api/v1/rules`
-const unknownError = '发生未知错误，请稍后重试。'
+const unknownError = '發生未知錯誤，請稍後重試。'
 
 class AbortedError extends Error {}
 
 async function getErrorMessage(response: Response): Promise<string> {
-  let message = `接口错误（${response.statusText}）：`
+  let message = `接口錯誤（${response.statusText}）：`
 
   const errorText = await response.text()
   if (errorText) {

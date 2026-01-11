@@ -1,46 +1,46 @@
 @echo off
 chcp 65001 >nul 2>&1
-title AI Document Review - 安装依赖
+title AI Document Review - 安裝依賴
 
 echo.
 echo ╔══════════════════════════════════════════════════════════╗
-echo ║        📦 AI Document Review - 安装依赖                  ║
+echo ║        📦 AI Document Review - 安裝依賴                  ║
 echo ╚══════════════════════════════════════════════════════════╝
 echo.
 
 cd /d "%~dp0"
-echo 📁 项目目录: %CD%
+echo 📁 項目目錄: %CD%
 echo.
 
-:: ========== 检查环境 ==========
+:: ========== 檢查環境 ==========
 echo ┌──────────────────────────────────────────────────────────┐
-echo │ 🔍 环境检查                                              │
+echo │ 🔍 環境檢查                                              │
 echo └──────────────────────────────────────────────────────────┘
 
-:: 检查 Node.js
+:: 檢查 Node.js
 node --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ Node.js 未安装
-    echo    请访问 https://nodejs.org/ 下载安装
+    echo ❌ Node.js 未安裝
+    echo    請訪問 https://nodejs.org/ 下載安裝
     pause
     exit /b 1
 )
 for /f "tokens=*" %%i in ('node --version') do echo ✅ Node.js: %%i
 
-:: 检查 npm
+:: 檢查 npm
 npm --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ npm 未安装
+    echo ❌ npm 未安裝
     pause
     exit /b 1
 )
 for /f "tokens=*" %%i in ('npm --version') do echo ✅ npm: %%i
 
-:: 检查 Python
+:: 檢查 Python
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ Python 未安装
-    echo    请访问 https://www.python.org/ 下载安装
+    echo ❌ Python 未安裝
+    echo    請訪問 https://www.python.org/ 下載安裝
     pause
     exit /b 1
 )
@@ -48,78 +48,78 @@ for /f "tokens=*" %%i in ('python --version') do echo ✅ Python: %%i
 
 echo.
 
-:: ========== 后端依赖 ==========
+:: ========== 後端依賴 ==========
 echo ┌──────────────────────────────────────────────────────────┐
-echo │ 🔧 安装后端依赖 (Python)                                 │
+echo │ 🔧 安裝後端依賴 (Python)                                 │
 echo └──────────────────────────────────────────────────────────┘
 
 cd app\api
 
-:: 创建虚拟环境（如果不存在）
+:: 創建虛擬環境（如果不存在）
 if not exist "venv" (
-    echo 📦 创建 Python 虚拟环境...
+    echo 📦 創建 Python 虛擬環境...
     python -m venv venv
     if errorlevel 1 (
-        echo ❌ 创建虚拟环境失败
+        echo ❌ 創建虛擬環境失敗
         pause
         exit /b 1
     )
-    echo ✅ 虚拟环境已创建
+    echo ✅ 虛擬環境已創建
 )
 
-:: 激活虚拟环境
+:: 激活虛擬環境
 call venv\Scripts\activate.bat
 
-:: 安装依赖
-echo 📦 安装 Python 依赖...
+:: 安裝依賴
+echo 📦 安裝 Python 依賴...
 pip install -r requirements.txt -q
 if errorlevel 1 (
-    echo ❌ 安装 Python 依赖失败
+    echo ❌ 安裝 Python 依賴失敗
     pause
     exit /b 1
 )
-echo ✅ Python 依赖安装完成
+echo ✅ Python 依賴安裝完成
 
-:: 检查 .env 文件
+:: 檢查 .env 文件
 if not exist ".env" (
     if exist ".env.tpl" (
         echo.
-        echo ⚠️  未找到 .env 文件，正在从模板创建...
+        echo ⚠️  未找到 .env 文件，正在從模板創建...
         copy .env.tpl .env >nul
-        echo ✅ 已创建 .env 文件，请编辑并配置 API Key
+        echo ✅ 已創建 .env 文件，請編輯並配置 API Key
     )
 )
 
 cd ..\..
 echo.
 
-:: ========== 前端依赖 ==========
+:: ========== 前端依賴 ==========
 echo ┌──────────────────────────────────────────────────────────┐
-echo │ 🎨 安装前端依赖 (Node.js)                                │
+echo │ 🎨 安裝前端依賴 (Node.js)                                │
 echo └──────────────────────────────────────────────────────────┘
 
 cd app\ui
 
-:: 安装 npm 依赖
-echo 📦 安装 npm 依赖...
+:: 安裝 npm 依賴
+echo 📦 安裝 npm 依賴...
 call npm install
 if errorlevel 1 (
-    echo ❌ 安装 npm 依赖失败
+    echo ❌ 安裝 npm 依賴失敗
     pause
     exit /b 1
 )
-echo ✅ npm 依赖安装完成
+echo ✅ npm 依賴安裝完成
 
 cd ..\..
 echo.
 
 :: ========== 完成 ==========
 echo ═══════════════════════════════════════════════════════════
-echo 🎉 所有依赖安装完成！
+echo 🎉 所有依賴安裝完成！
 echo.
 echo 📌 下一步:
-echo    1. 编辑 app\api\.env 文件，配置必要的 API Key
-echo    2. 运行 start.bat 启动服务
+echo    1. 編輯 app\api\.env 文件，配置必要的 API Key
+echo    2. 運行 start.bat 啓動服務
 echo ═══════════════════════════════════════════════════════════
 echo.
 

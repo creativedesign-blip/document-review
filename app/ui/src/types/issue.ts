@@ -6,7 +6,7 @@ export interface Issue {
   status: IssueStatus
   explanation: string
   suggested_fix: string
-  risk_level?: string | null  // 风险等级：高/中/低
+  risk_level?: string | null  // 風險等級：高/中/低
   location: {
     source_sentence: string
     page_num: number

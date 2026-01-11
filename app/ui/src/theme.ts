@@ -2,7 +2,7 @@ import { BrandVariants, Theme, createDarkTheme, createLightTheme } from '@fluent
 
 export type ThemeMode = 'dark' | 'light'
 
-// 专业科技感配色：靛蓝为主色调
+// 專業科技感配色：靛藍爲主色調
 const brand: BrandVariants = {
   10: '#050a18',
   20: '#0a1428',
@@ -22,9 +22,9 @@ const brand: BrandVariants = {
   160: '#f5f9ff',
 }
 
-// 科技感强调色 - 深色/浅色模式共用
+// 科技感強調色 - 深色/淺色模式共用
 export const accentColors = {
-  // 主强调色
+  // 主強調色
   primary: '#3366cc',
   primaryLight: '#4d7dd9',
   primaryDark: '#2952a3',
@@ -33,7 +33,7 @@ export const accentColors = {
   warning: '#f59e0b',
   danger: '#ef4444',
   info: '#06b6d4',
-  // 深色模式专用
+  // 深色模式專用
   dark: {
     bg: '#0f172a',
     bgElevated: '#1e293b',
@@ -43,7 +43,7 @@ export const accentColors = {
     text: '#f1f5f9',
     textMuted: '#94a3b8',
   },
-  // 浅色模式专用
+  // 淺色模式專用
   light: {
     bg: '#f8fafc',
     bgElevated: '#ffffff',

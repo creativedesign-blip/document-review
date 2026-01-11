@@ -8,7 +8,7 @@ const apiOrigin = import.meta.env.VITE_API_ORIGIN ?? ''
 export async function getBlob(name: string): Promise<Blob> {
   const resp = await fetch(`${apiOrigin}/api/v1/files/${encodeURIComponent(name)}`)
   if (!resp.ok) {
-    throw new Error('下载文件失败')
+    throw new Error('下載文件失敗')
   }
   return await resp.blob()
 }
@@ -16,7 +16,7 @@ export async function getBlob(name: string): Promise<Blob> {
 export async function listBlobs(): Promise<LocalFileItem[]> {
   const resp = await fetch(`${apiOrigin}/api/v1/files`)
   if (!resp.ok) {
-    throw new Error('获取文件列表失败')
+    throw new Error('獲取文件列表失敗')
   }
   const names = (await resp.json()) as string[]
   return names.map((n) => ({ name: n }))
@@ -30,7 +30,7 @@ export async function uploadBlob(file: File): Promise<void> {
     body: formData
   })
   if (!resp.ok) {
-    throw new Error('上传文件失败')
+    throw new Error('上傳文件失敗')
   }
 }
 
@@ -39,6 +39,6 @@ export async function deleteBlob(name: string): Promise<void> {
     method: 'DELETE'
   })
   if (!resp.ok) {
-    throw new Error('删除文件失败')
+    throw new Error('刪除文件失敗')
   }
 }

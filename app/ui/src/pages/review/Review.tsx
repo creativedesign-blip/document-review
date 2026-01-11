@@ -410,8 +410,8 @@ function Review() {
         : highOpen > 0
           ? { label: '需整改', tone: 'danger' as const }
           : processed === total
-            ? { label: '可出具结论', tone: 'success' as const }
-            : { label: '审阅中', tone: 'warning' as const }
+            ? { label: '可出具結論', tone: 'success' as const }
+            : { label: '審閱中', tone: 'warning' as const }
 
     return { total, processed, high, medium, low, conclusion }
   }, [issues])
@@ -481,7 +481,7 @@ function Review() {
   }
 
   function handleSelectIssue(issue: Issue) {
-    // 检查是否点击同一个 issue（取消选择）
+    // 檢查是否點擊同一個 issue（取消選擇）
     if (selectedIssueId === issue.id) {
       setSelectedIssueId(undefined)
       setSelectedAnnotId((annotId) => {
@@ -494,7 +494,7 @@ function Review() {
       return
     }
 
-    // 清除旧的注释
+    // 清除舊的註釋
     setSelectedAnnotId((annotId) => {
       if (annotId) {
         const pdfBytes = deleteAnnotation(annotId)
@@ -503,15 +503,15 @@ function Review() {
       return undefined
     })
 
-    // 设置新选中的 issue
+    // 設置新選中的 issue
     setSelectedIssueId(issue.id)
 
-    // 跳转到对应页面
+    // 跳轉到對應頁面
     if (issue.location?.page_num) {
       setPageNumber(issue.location.page_num)
     }
 
-    // 添加新的注释高亮
+    // 添加新的註釋高亮
     if (issue.location?.bounding_box?.length) {
       try {
         const [pdfBytes, annot] = addAnnotation(
@@ -544,7 +544,7 @@ function Review() {
   useEffect(() => {
     const d = searchParams.get('document')
     if (d) setDocId(d)
-    else setPdfLoadError('URL 中未指定文档')
+    else setPdfLoadError('URL 中未指定文檔')
   }, [searchParams])
 
   useEffect(() => {
@@ -559,7 +559,7 @@ function Review() {
         const pdfBytesWithAnnot = initAnnotations(pdfByteArray)
         setPdfData({ data: pdfBytesWithAnnot })
       } catch (e) {
-        setPdfLoadError(`加载失败：${e instanceof Error ? e.message : String(e)}`)
+        setPdfLoadError(`加載失敗：${e instanceof Error ? e.message : String(e)}`)
       }
     }
     if (docId) loadPdf(docId)
@@ -594,7 +594,7 @@ function Review() {
         <div className={classes.leftHeader}>
           <div className={classes.countRow}>
             <Badge appearance="tint" color="informative" shape="rounded">
-              {filteredIssues.length}/{issues.length} 条
+              {filteredIssues.length}/{issues.length} 條
             </Badge>
             <span className={classes.docName} title={docId ?? ''}>{docId ?? ''}</span>
           </div>
@@ -602,7 +602,7 @@ function Review() {
             size="small"
             className={classes.searchInput}
             contentBefore={<SearchRegular />}
-            placeholder="搜索问题…"
+            placeholder="搜索問題…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -621,7 +621,7 @@ function Review() {
               className={classes.filterBtn}
               onClick={() => setStatusFilter([IssueStatus.NotReviewed])}
             >
-              待处理
+              待處理
             </Button>
             <Button
               size="small"
@@ -629,7 +629,7 @@ function Review() {
               className={classes.filterBtn}
               onClick={() => setStatusFilter([IssueStatus.Accepted])}
             >
-              已采纳
+              已採納
             </Button>
             <Button
               size="small"
@@ -645,7 +645,7 @@ function Review() {
           {checkError && (
             <MessageBar intent="error">
               <MessageBarBody>
-                <MessageBarTitle>审核失败</MessageBarTitle>
+                <MessageBarTitle>審覈失敗</MessageBarTitle>
                 {checkError}
               </MessageBarBody>
             </MessageBar>
@@ -659,7 +659,7 @@ function Review() {
             </div>
           )}
           {!checkInProgress && filteredIssues.length === 0 && (
-            <div className={classes.noIssues}>暂无问题</div>
+            <div className={classes.noIssues}>暫無問題</div>
           )}
         </div>
       </Card>
@@ -681,13 +681,13 @@ function Review() {
               icon={compareMode ? <PanelLeftContractRegular /> : <PanelLeftExpandRegular />}
               onClick={() => setCompareMode((m) => !m)}
             >
-              {compareMode ? '单视图' : '对比'}
+              {compareMode ? '單視圖' : '對比'}
             </Button>
             <Button size="small" appearance="subtle" icon={<ZoomOutRegular />} onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.1).toFixed(2)))} />
             <span className={classes.zoomInfo}>{Math.round(zoom * 100)}%</span>
             <Button size="small" appearance="subtle" icon={<ZoomInRegular />} onClick={() => setZoom((z) => Math.min(2, +(z + 0.1).toFixed(2)))} />
             <Button size="small" appearance="primary" icon={checkButtonIcon} disabledFocusable={checkInProgress} onClick={() => runCheck(true)}>
-              重新审阅
+              重新審閱
             </Button>
             <Button size="small" appearance="secondary" onClick={() => navigate('/')}>
               返回
@@ -698,7 +698,7 @@ function Review() {
           {/* Original PDF */}
           {compareMode && (
             <div className={classes.pdfPane}>
-              <div className={classes.pdfPaneHeader}>原始文档</div>
+              <div className={classes.pdfPaneHeader}>原始文檔</div>
               <div className={classes.pdfWrap}>
                 <Card className={classes.pdfCard}>
                   {pdfLoadError && (
@@ -715,7 +715,7 @@ function Review() {
           )}
           {/* Annotated PDF */}
           <div className={classes.pdfPane}>
-            {compareMode && <div className={classes.pdfPaneHeader}>标注文档</div>}
+            {compareMode && <div className={classes.pdfPaneHeader}>標註文檔</div>}
             <div className={classes.pdfWrap}>
               <Card className={classes.pdfCard}>
                 {pdfLoadError && !compareMode && (
@@ -735,10 +735,10 @@ function Review() {
       {/* RIGHT */}
       <div className={classes.right}>
         <div className={classes.overviewCard}>
-          <div className={classes.overviewHeader}>审阅概览</div>
+          <div className={classes.overviewHeader}>審閱概覽</div>
           <div className={classes.overviewGrid}>
             <div className={classes.metricItem}>
-              <span className={classes.metricLabel}>进度</span>
+              <span className={classes.metricLabel}>進度</span>
               <span className={classes.metricValue}>{metrics.processed}/{metrics.total}</span>
             </div>
             <div className={classes.metricItem}>
@@ -752,7 +752,7 @@ function Review() {
               </span>
             </div>
             <div className={classes.metricItem}>
-              <span className={classes.metricLabel}>结论</span>
+              <span className={classes.metricLabel}>結論</span>
               <Badge appearance="filled" shape="rounded" color={metrics.conclusion.tone} style={{ fontSize: '11px' }}>
                 {metrics.conclusion.label}
               </Badge>
@@ -767,7 +767,7 @@ function Review() {
             <div className={classes.accordionItem}>
               <div className={classes.accordionHeader} onClick={() => setRulesExpanded(!rulesExpanded)}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  审核规则
+                  審覈規則
                   <Badge appearance="outline" size="small" color="informative">{enabledRuleIds.length}/{totalRulesCount}</Badge>
                 </span>
                 <ChevronDown16Regular className={`${classes.accordionIcon} ${rulesExpanded ? classes.accordionIconOpen : ''}`} />
@@ -789,7 +789,7 @@ function Review() {
           <div className={classes.accordionItem}>
             <div className={classes.accordionHeader} onClick={() => setTypesExpanded(!typesExpanded)}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                问题分类
+                問題分類
                 {types.length > 0 && <Badge appearance="outline" size="small" color="informative">{types.length}</Badge>}
               </span>
               <ChevronDown16Regular className={`${classes.accordionIcon} ${typesExpanded ? classes.accordionIconOpen : ''}`} />
@@ -797,7 +797,7 @@ function Review() {
             {typesExpanded && (
               <div className={classes.accordionContent}>
                 <div className={classes.typeCards}>
-                  {types.length === 0 && <div className={classes.noIssues}>暂无</div>}
+                  {types.length === 0 && <div className={classes.noIssues}>暫無</div>}
                   {types.map(([type, count]) => (
                     <div key={type} className={classes.typeCard}>
                       <div className={classes.typeInfo}>
@@ -807,7 +807,7 @@ function Review() {
                       <div className={classes.typeCount}>
                         <Badge appearance="tint" shape="rounded" color={issueRiskTone(type)}>{count}</Badge>
                         <Button appearance="subtle" size="small" onClick={() => toggleTypeVisibility(type)}>
-                          {hideTypesFilter.includes(type) ? '显示' : '隐藏'}
+                          {hideTypesFilter.includes(type) ? '顯示' : '隱藏'}
                         </Button>
                       </div>
                     </div>

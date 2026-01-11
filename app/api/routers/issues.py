@@ -285,7 +285,7 @@ async def start_issue_hitl(
         thread_id=thread_id, issue_id=issue_id, update_fields=update_fields
     )
     if interrupt is None:
-        raise HTTPException(status_code=500, detail="HITL 未产生中断，无法进入人工决策流程。")
+        raise HTTPException(status_code=500, detail="HITL 未產生中斷，無法進入人工決策流程。")
 
     proposed_action = {"name": "update_issue", "args": {"issue_id": issue_id, "update_fields": update_fields}}
     return HitlStartResponse(
@@ -317,7 +317,7 @@ async def resume_issue_hitl(
     if decision.get("type") == "edit":
         edited_action = decision.get("edited_action") or {}
         if edited_action.get("name") and edited_action.get("name") != "update_issue":
-            raise HTTPException(status_code=400, detail="仅允许编辑 update_issue 工具调用。")
+            raise HTTPException(status_code=400, detail="僅允許編輯 update_issue 工具調用。")
         args = edited_action.get("args") or {}
         args["issue_id"] = issue_id
         edited_action["name"] = "update_issue"

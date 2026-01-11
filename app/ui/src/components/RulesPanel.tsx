@@ -242,7 +242,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
 
   async function handleSave() {
     if (!formName.trim() || !formDesc.trim()) {
-      setError('请填写规则名称和描述')
+      setError('請填寫規則名稱和描述')
       return
     }
 
@@ -321,7 +321,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
         <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
           {rules.length === 0 ? (
             <div style={{ padding: '16px', textAlign: 'center', color: tokens.colorNeutralForeground3, fontSize: '12px' }}>
-              暂无规则
+              暫無規則
             </div>
           ) : (
             rules.map(rule => (
@@ -356,7 +356,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
           )}
           <div style={{ padding: '8px 14px', borderTop: rules.length > 0 ? 'none' : undefined }}>
             <Button size="small" appearance="subtle" icon={<Add16Regular />} onClick={openAddDialog}>
-              添加规则
+              添加規則
             </Button>
           </div>
         </div>
@@ -369,7 +369,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
       {hideHeader ? compactRuleList : (
         <Card className={classes.panel}>
           <div className={classes.header}>
-            <span className={classes.headerTitle}>审核规则</span>
+            <span className={classes.headerTitle}>審覈規則</span>
             <Button
               size="small"
               appearance="subtle"
@@ -392,7 +392,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
             </div>
           ) : rules.length === 0 ? (
             <div className={classes.emptyState}>
-              暂无自定义规则，点击"添加"创建新规则
+              暫無自定義規則，點擊"添加"創建新規則
             </div>
           ) : (
             <div className={classes.ruleList}>
@@ -441,26 +441,26 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
       <Dialog open={dialogOpen} onOpenChange={(_, data) => setDialogOpen(data.open)} modalType="modal">
         <DialogSurface className={classes.dialogSurface} style={{ zIndex: 1000000 }}>
           <DialogBody>
-            <DialogTitle>{editingRule ? '编辑规则' : '添加规则'}</DialogTitle>
+            <DialogTitle>{editingRule ? '編輯規則' : '添加規則'}</DialogTitle>
             <DialogContent>
-              <Field label="规则名称" required className={classes.formField}>
+              <Field label="規則名稱" required className={classes.formField}>
                 <Input
                   value={formName}
                   onChange={(_, data) => setFormName(data.value)}
-                  placeholder="例如：敏感词检测"
+                  placeholder="例如：敏感詞檢測"
                 />
               </Field>
 
-              <Field label="规则描述" required className={classes.formField}>
+              <Field label="規則描述" required className={classes.formField}>
                 <Textarea
                   value={formDesc}
                   onChange={(_, data) => setFormDesc(data.value)}
-                  placeholder="描述该规则检测的问题类型..."
+                  placeholder="描述該規則檢測的問題類型..."
                   rows={3}
                 />
               </Field>
 
-              <Field label="风险等级" className={classes.formField}>
+              <Field label="風險等級" className={classes.formField}>
                 <Dropdown
                   value={formRiskLevel}
                   selectedOptions={[formRiskLevel]}
@@ -474,7 +474,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
 
               <div className={classes.exampleSection}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '12px', fontWeight: 600 }}>示例（可选）</span>
+                  <span style={{ fontSize: '12px', fontWeight: 600 }}>示例（可選）</span>
                   <Button size="small" appearance="subtle" onClick={addExample}>
                     + 添加示例
                   </Button>
@@ -486,14 +486,14 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
                         size="small"
                         value={example.text}
                         onChange={(_, data) => updateExample(index, 'text', data.value)}
-                        placeholder="问题文本示例"
+                        placeholder="問題文本示例"
                         style={{ marginBottom: '4px' }}
                       />
                       <Input
                         size="small"
                         value={example.explanation}
                         onChange={(_, data) => updateExample(index, 'explanation', data.value)}
-                        placeholder="说明"
+                        placeholder="說明"
                       />
                     </div>
                     <Button
@@ -513,7 +513,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
                 disabled={saving}
                 icon={saving ? <Spinner size="tiny" /> : undefined}
               >
-                {editingRule ? '保存' : '创建'}
+                {editingRule ? '保存' : '創建'}
               </Button>
               <Button appearance="secondary" onClick={() => setDialogOpen(false)}>
                 取消
@@ -527,7 +527,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
       <Dialog open={deleteDialogOpen} onOpenChange={(_, data) => !data.open && setDeleteDialogOpen(false)}>
         <DialogSurface className={classes.dialogSurface}>
           <DialogBody>
-            <DialogTitle>删除规则</DialogTitle>
+            <DialogTitle>刪除規則</DialogTitle>
             <DialogContent>
               <div style={{ 
                 padding: '16px', 
@@ -537,7 +537,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
                 border: `1px solid ${tokens.colorPaletteRedBorder1}`
               }}>
                 <div style={{ fontSize: '13px', color: tokens.colorPaletteRedForeground1 }}>
-                  确定要删除这条规则吗？此操作无法撤销。
+                  確定要刪除這條規則嗎？此操作無法撤銷。
                 </div>
               </div>
             </DialogContent>
@@ -552,7 +552,7 @@ export function RulesPanel({ docId, enabledRuleIds, onEnabledRulesChange, onRule
                 disabled={deleting}
                 icon={deleting ? <Spinner size="tiny" /> : <Delete16Regular />}
               >
-                {deleting ? '删除中...' : '确认删除'}
+                {deleting ? '刪除中...' : '確認刪除'}
               </Button>
             </DialogActions>
           </DialogBody>

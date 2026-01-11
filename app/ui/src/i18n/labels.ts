@@ -1,18 +1,18 @@
 export const ISSUE_TYPE_LABELS: Record<string, string> = {
-  'Grammar & Spelling': '语法与拼写',
-  'Definitive Language': '确定性/保证性措辞',
+  'Grammar & Spelling': '語法與拼寫',
+  'Definitive Language': '確定性/保證性措辭',
 };
 
 export const ISSUE_TYPE_DESCRIPTIONS: Record<string, string> = {
-  'Grammar & Spelling': '拼写、语法与标点等问题（含句式结构）',
-  'Definitive Language': '使用过度确定/保证性措辞（如“必须”“一定”“保证”等）',
+  'Grammar & Spelling': '拼寫、語法與標點等問題（含句式結構）',
+  'Definitive Language': '使用過度確定/保證性措辭（如“必須”“一定”“保證”等）',
 };
 
 export const ISSUE_STATUS_LABELS: Record<string, string> = {
-  not_reviewed: '未处理',
-  'not reviewed': '未处理',
-  accepted: '已采纳',
-  dismissed: '已驳回',
+  not_reviewed: '未處理',
+  'not reviewed': '未處理',
+  accepted: '已採納',
+  dismissed: '已駁回',
 }
 
 export type RiskLevel = '高' | '中' | '低'
@@ -39,18 +39,18 @@ export function normalizeIssueStatus(status: string | undefined): string {
 
 export function issueStatusLabel(status: string | undefined): string {
   const normalized = normalizeIssueStatus(status)
-  return ISSUE_STATUS_LABELS[normalized] ?? status ?? '未处理'
+  return ISSUE_STATUS_LABELS[normalized] ?? status ?? '未處理'
 }
 
 export function issueRiskLevel(type: string, issueRiskLevelValue?: string | null): RiskLevel {
-  // 优先使用 issue 自身的 risk_level 字段（自定义规则会设置此值）
+  // 優先使用 issue 自身的 risk_level 字段（自定義規則會設置此值）
   if (issueRiskLevelValue) {
     // 兼容中文和英文值
     if (issueRiskLevelValue === '高' || issueRiskLevelValue === 'high') return '高'
     if (issueRiskLevelValue === '中' || issueRiskLevelValue === 'medium') return '中'
     if (issueRiskLevelValue === '低' || issueRiskLevelValue === 'low') return '低'
   }
-  // 回退到基于类型的映射（预设规则）
+  // 回退到基於類型的映射（預設規則）
   return ISSUE_TYPE_RISK[type] ?? '中'
 }
 

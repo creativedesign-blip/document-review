@@ -136,7 +136,7 @@ export function IssueListItem({
       </div>
       <div className={classes.meta}>
         <Badge appearance="tint" shape="rounded" color={issueRiskTone(issue.type, issue.risk_level)}>
-          {issueRiskLevel(issue.type, issue.risk_level)}风险
+          {issueRiskLevel(issue.type, issue.risk_level)}風險
         </Badge>
         <Badge appearance="outline" shape="rounded" color="informative">
           {issueTypeLabel(issue.type)}

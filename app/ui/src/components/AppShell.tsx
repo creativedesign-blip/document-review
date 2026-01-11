@@ -215,7 +215,7 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const pageTitle = location.pathname === '/review' ? '智能审阅' : '文档库'
+  const pageTitle = location.pathname === '/review' ? '智能審閱' : '文檔庫'
 
   return (
     <div className={classes.shell}>
@@ -228,14 +228,14 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
             <div className={classes.brandInfo}>
               <div className={classes.statusRow}>
                 <span className={classes.statusDot} />
-                <span className={classes.brandTitle}>AI 文档审核</span>
+                <span className={classes.brandTitle}>AI 文檔審覈</span>
               </div>
-              <span className={classes.brandSub}>智能审阅 · 风险识别</span>
+              <span className={classes.brandSub}>智能審閱 · 風險識別</span>
             </div>
           </div>
 
-          <div className={classes.navSectionTitle}>工作台</div>
-          <NavItem to="/" label="文档库" icon={<DocumentBulletListRegular />} />
+          <div className={classes.navSectionTitle}>工作臺</div>
+          <NavItem to="/" label="文檔庫" icon={<DocumentBulletListRegular />} />
         </aside>
 
         <div className={classes.content}>
@@ -252,20 +252,20 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
                 </Button>
               )}
               <span className={classes.pageTitle}>{pageTitle}</span>
-              <span className={classes.breadcrumbs}>/ 合规审阅中心</span>
+              <span className={classes.breadcrumbs}>/ 合規審閱中心</span>
             </div>
             <div className={classes.actions}>
               <Input
                 className={classes.search}
                 size="small"
                 contentBefore={<SearchRegular />}
-                placeholder="搜索文档、问题…"
+                placeholder="搜索文檔、問題…"
               />
               <Button appearance="subtle" size="small" onClick={onToggleMode}>
                 {mode === 'dark' ? (
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <WeatherSunnyRegular />
-                    浅色
+                    淺色
                   </span>
                 ) : (
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

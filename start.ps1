@@ -1,15 +1,15 @@
 # ============================================================
-# 🚀 AI Document Review - 一键启动脚本 (PowerShell)
+# 🚀 AI Document Review - 一鍵啓動腳本 (PowerShell)
 # ============================================================
-# 功能：同时启动后端 API 和前端 UI
-# 用法：右键点击 start.ps1 -> 使用 PowerShell 运行
-#       或在 PowerShell 中执行: .\start.ps1
+# 功能：同時啓動後端 API 和前端 UI
+# 用法：右鍵點擊 start.ps1 -> 使用 PowerShell 運行
+#       或在 PowerShell 中執行: .\start.ps1
 # ============================================================
 
 $ErrorActionPreference = "Stop"
 $Host.UI.RawUI.WindowTitle = "AI Document Review - Launcher"
 
-# 颜色输出函数
+# 顏色輸出函數
 function Write-Color {
     param([string]$Text, [string]$Color = "White")
     Write-Host $Text -ForegroundColor $Color
@@ -18,12 +18,12 @@ function Write-Color {
 function Write-Banner {
     Write-Color ""
     Write-Color "╔══════════════════════════════════════════════════════════╗" "Cyan"
-    Write-Color "║        🚀 AI Document Review - 一键启动                  ║" "Cyan"
+    Write-Color "║        🚀 AI Document Review - 一鍵啓動                  ║" "Cyan"
     Write-Color "╚══════════════════════════════════════════════════════════╝" "Cyan"
     Write-Color ""
 }
 
-# 检查 Node.js
+# 檢查 Node.js
 function Test-NodeJS {
     try {
         $version = node --version 2>$null
@@ -32,11 +32,11 @@ function Test-NodeJS {
             return $true
         }
     } catch {}
-    Write-Color "❌ Node.js 未安装，请先安装 Node.js" "Red"
+    Write-Color "❌ Node.js 未安裝，請先安裝 Node.js" "Red"
     return $false
 }
 
-# 检查 Python
+# 檢查 Python
 function Test-Python {
     try {
         $version = python --version 2>$null
@@ -45,7 +45,7 @@ function Test-Python {
             return $true
         }
     } catch {}
-    Write-Color "❌ Python 未安装，请先安装 Python" "Red"
+    Write-Color "❌ Python 未安裝，請先安裝 Python" "Red"
     return $false
 }
 
@@ -53,33 +53,33 @@ function Test-Python {
 Write-Banner
 
 $ProjectRoot = $PSScriptRoot
-Write-Color "📁 项目目录: $ProjectRoot" "Yellow"
+Write-Color "📁 項目目錄: $ProjectRoot" "Yellow"
 Write-Color ""
 
-# 环境检查
-Write-Color "🔍 环境检查..." "Yellow"
+# 環境檢查
+Write-Color "🔍 環境檢查..." "Yellow"
 $nodeOk = Test-NodeJS
 $pythonOk = Test-Python
 
 if (-not ($nodeOk -and $pythonOk)) {
     Write-Color ""
-    Write-Color "⚠️  请先安装缺失的依赖后重试" "Red"
-    Read-Host "按 Enter 键退出"
+    Write-Color "⚠️  請先安裝缺失的依賴後重試" "Red"
+    Read-Host "按 Enter 鍵退出"
     exit 1
 }
 
 Write-Color ""
 
-# 检查环境变量文件
+# 檢查環境變量文件
 $envFile = Join-Path $ProjectRoot "app\api\.env"
 if (-not (Test-Path $envFile)) {
     Write-Color "⚠️  未找到 app\api\.env 文件" "Yellow"
-    Write-Color "   请复制 app\api\.env.tpl 并重命名为 .env，然后配置 API Key" "Yellow"
+    Write-Color "   請複製 app\api\.env.tpl 並重命名爲 .env，然後配置 API Key" "Yellow"
     Write-Color ""
 }
 
-# 启动后端
-Write-Color "🔧 启动后端服务 (FastAPI)..." "Cyan"
+# 啓動後端
+Write-Color "🔧 啓動後端服務 (FastAPI)..." "Cyan"
 $backendPath = Join-Path $ProjectRoot "app\api"
 $backendCmd = @"
 cd '$backendPath'
@@ -91,17 +91,17 @@ python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 Start-Process powershell -ArgumentList "-NoExit", "-Command", $backendCmd -WindowStyle Normal
 
-Write-Color "   ✅ 后端服务已在新窗口启动" "Green"
+Write-Color "   ✅ 後端服務已在新窗口啓動" "Green"
 Write-Color "   📍 API 地址: http://localhost:8000" "White"
-Write-Color "   📍 API 文档: http://localhost:8000/docs" "White"
+Write-Color "   📍 API 文檔: http://localhost:8000/docs" "White"
 Write-Color ""
 
-# 等待后端启动
-Write-Color "⏳ 等待后端服务启动 (5秒)..." "Yellow"
+# 等待後端啓動
+Write-Color "⏳ 等待後端服務啓動 (5秒)..." "Yellow"
 Start-Sleep -Seconds 5
 
-# 启动前端
-Write-Color "🎨 启动前端服务 (Vite)..." "Cyan"
+# 啓動前端
+Write-Color "🎨 啓動前端服務 (Vite)..." "Cyan"
 $frontendPath = Join-Path $ProjectRoot "app\ui"
 $frontendCmd = @"
 cd '$frontendPath'
@@ -110,31 +110,31 @@ npm run dev
 
 Start-Process powershell -ArgumentList "-NoExit", "-Command", $frontendCmd -WindowStyle Normal
 
-Write-Color "   ✅ 前端服务已在新窗口启动" "Green"
+Write-Color "   ✅ 前端服務已在新窗口啓動" "Green"
 Write-Color "   📍 前端地址: http://localhost:5173" "White"
 Write-Color ""
 
 # 完成
 Write-Color "═══════════════════════════════════════════════════════════" "Cyan"
-Write-Color "🎉 所有服务已启动！" "Green"
+Write-Color "🎉 所有服務已啓動！" "Green"
 Write-Color ""
-Write-Color "📌 服务地址:" "Yellow"
+Write-Color "📌 服務地址:" "Yellow"
 Write-Color "   • 前端 UI:  http://localhost:5173" "White"
-Write-Color "   • 后端 API: http://localhost:8000" "White"
-Write-Color "   • API 文档: http://localhost:8000/docs" "White"
+Write-Color "   • 後端 API: http://localhost:8000" "White"
+Write-Color "   • API 文檔: http://localhost:8000/docs" "White"
 Write-Color ""
-Write-Color "📌 关闭服务:" "Yellow"
-Write-Color "   • 关闭各自的 PowerShell 窗口即可停止服务" "White"
+Write-Color "📌 關閉服務:" "Yellow"
+Write-Color "   • 關閉各自的 PowerShell 窗口即可停止服務" "White"
 Write-Color "═══════════════════════════════════════════════════════════" "Cyan"
 Write-Color ""
 
-# 询问是否打开浏览器
-$openBrowser = Read-Host "是否打开浏览器？(Y/n)"
+# 詢問是否打開瀏覽器
+$openBrowser = Read-Host "是否打開瀏覽器？(Y/n)"
 if ($openBrowser -ne "n" -and $openBrowser -ne "N") {
     Start-Process "http://localhost:5173"
 }
 
 Write-Color ""
-Write-Color "按 Enter 键关闭此窗口（服务会继续运行）..." "Gray"
+Write-Color "按 Enter 鍵關閉此窗口（服務會繼續運行）..." "Gray"
 Read-Host
 

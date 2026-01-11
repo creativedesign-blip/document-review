@@ -1,6 +1,6 @@
 from common.logger import get_logger
 
-# Workaround: 如果系统缺少 sqlite3 模块，使用 pysqlite3 代替
+# Workaround: 如果系統缺少 sqlite3 模塊，使用 pysqlite3 代替
 import sys
 try:
     import sqlite3

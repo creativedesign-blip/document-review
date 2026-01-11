@@ -293,15 +293,15 @@ function Files() {
     <div className={classes.page}>
       <div className={classes.header}>
         <div className={classes.titleWrap}>
-          <div className={classes.title}>文档库</div>
-          <div className={classes.subtitle}>统一管理审阅任务、问题识别与整改记录</div>
+          <div className={classes.title}>文檔庫</div>
+          <div className={classes.subtitle}>統一管理審閱任務、問題識別與整改記錄</div>
         </div>
         <div className={classes.headerActions}>
           <Button appearance="secondary" icon={<FolderOpenRegular />} onClick={refreshList}>
             刷新
           </Button>
           <Button appearance="primary" icon={<ArrowUploadRegular />} onClick={triggerPick}>
-            上传文档
+            上傳文檔
           </Button>
         </div>
       </div>
@@ -309,7 +309,7 @@ function Files() {
       {error && (
         <MessageBar intent="error" style={{ marginBottom: 12 }}>
           <MessageBarBody>
-            <MessageBarTitle>请求失败</MessageBarTitle>
+            <MessageBarTitle>請求失敗</MessageBarTitle>
             {error}
           </MessageBarBody>
         </MessageBar>
@@ -342,12 +342,12 @@ function Files() {
               <div className={classes.uploadIconWrap}>
                 <CloudArrowUpRegular className={classes.uploadIcon} />
               </div>
-              <div className={classes.uploadTitle}>拖拽文件到此处上传</div>
-              <div className={classes.uploadHint}>支持 PDF 格式 · 点击选择文件</div>
+              <div className={classes.uploadTitle}>拖拽文件到此處上傳</div>
+              <div className={classes.uploadHint}>支持 PDF 格式 · 點擊選擇文件</div>
               <div className={classes.statsRow}>
                 <Badge appearance="tint" color="informative" shape="rounded">
                   <DocumentPdfRegular style={{ marginRight: 4 }} />
-                  已入库 {totalCount} 份
+                  已入庫 {totalCount} 份
                 </Badge>
               </div>
             </div>
@@ -364,9 +364,9 @@ function Files() {
         <Card className={classes.panel}>
           <div className={classes.listHeader}>
             <div className={classes.listTitle}>
-              <Text weight="semibold">全部文档</Text>
+              <Text weight="semibold">全部文檔</Text>
               <Text size={200} style={{ color: tokens.colorNeutralForeground3 }}>
-                点击进入审核工作台
+                點擊進入審覈工作臺
               </Text>
             </div>
             <Badge appearance="filled" color="informative" shape="rounded">
@@ -380,7 +380,7 @@ function Files() {
                 <SkeletonItem key={i} style={{ height: 120, borderRadius: 10 }} />
               ))}
             {fileList && fileList.length === 0 && (
-              <div className={classes.empty}>暂无文档，请上传 PDF 开始审核</div>
+              <div className={classes.empty}>暫無文檔，請上傳 PDF 開始審覈</div>
             )}
             {recentDocs.map((file) => (
               <div key={file.name} className={classes.docCard}>
@@ -390,7 +390,7 @@ function Files() {
                 <div className={classes.docInfo} onClick={() => openDocument(file.name)}>
                   <div className={classes.docName}>{file.name}</div>
                   <div className={classes.docMeta}>
-                    {file.lastModified ? file.lastModified.toLocaleDateString() : '已上传'}
+                    {file.lastModified ? file.lastModified.toLocaleDateString() : '已上傳'}
                   </div>
                 </div>
                 <div className={classes.docActions}>
@@ -414,11 +414,11 @@ function Files() {
       <Dialog open={uploading}>
         <DialogSurface>
           <DialogBody>
-            <DialogTitle>正在上传…</DialogTitle>
+            <DialogTitle>正在上傳…</DialogTitle>
             <DialogContent>
               <ProgressBar />
               <div style={{ marginTop: 10, color: tokens.colorNeutralForeground3, fontSize: 12 }}>
-                上传完成后将自动进入审核页面
+                上傳完成後將自動進入審覈頁面
               </div>
             </DialogContent>
           </DialogBody>
@@ -428,10 +428,10 @@ function Files() {
       <Dialog open={!!deleteTarget} onOpenChange={(_, data) => !data.open && setDeleteTarget(undefined)}>
         <DialogSurface>
           <DialogBody>
-            <DialogTitle>确认删除</DialogTitle>
+            <DialogTitle>確認刪除</DialogTitle>
             <DialogContent>
               <div style={{ color: tokens.colorNeutralForeground2, fontSize: 14 }}>
-                确定要删除文档 <strong>{deleteTarget}</strong> 吗？此操作不可撤销。
+                確定要刪除文檔 <strong>{deleteTarget}</strong> 嗎？此操作不可撤銷。
               </div>
             </DialogContent>
             <DialogActions>
@@ -439,7 +439,7 @@ function Files() {
                 取消
               </Button>
               <Button appearance="primary" onClick={handleDelete} disabled={deleting}>
-                {deleting ? '删除中…' : '确认删除'}
+                {deleting ? '刪除中…' : '確認刪除'}
               </Button>
             </DialogActions>
           </DialogBody>

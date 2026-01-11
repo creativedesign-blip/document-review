@@ -38,7 +38,7 @@ async def download_file(filename: str):
 
 @router.delete("/api/v1/files/{filename}")
 async def delete_file(filename: str):
-    """删除指定的 PDF 文件"""
+    """刪除指定的 PDF 文件"""
     docs_dir = Path(settings.local_docs_dir)
     file_path = docs_dir / filename
     if not file_path.exists():

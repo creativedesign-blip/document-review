@@ -97,7 +97,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
 
   async function runHitlDecision(decision: Record<string, unknown>) {
     if (!hitlThreadId) {
-      setHitlError("缺少 thread_id，无法继续。请重新打开编辑窗口。");
+      setHitlError("缺少 thread_id，無法繼續。請重新打開編輯窗口。");
       return;
     }
     setHitlLoading(true);
@@ -127,7 +127,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
   }
 
   /**
-   * 接受问题，并提交修改内容（可选）。
+   * 接受問題，並提交修改內容（可選）。
    */
   async function handleAccept() {
     try {
@@ -155,7 +155,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
   }
 
   /**
-   * 驳回问题。
+   * 駁回問題。
    */
   async function handleDismiss() {
     try {
@@ -178,7 +178,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
   }
 
   /**
-   * 提交驳回反馈。
+   * 提交駁回反饋。
    */
   async function handleSubmitFeedback() {
     try {
@@ -219,7 +219,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
 
       {
         selected && <>
-          <Field label="说明" className={classes.explanation}>
+          <Field label="說明" className={classes.explanation}>
             <Textarea
               defaultValue={issue.modified_fields?.explanation ? issue.modified_fields.explanation : issue.explanation}
               readOnly={issue.status !== IssueStatus.NotReviewed}
@@ -229,7 +229,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
               rows={4}
             />
           </Field>
-          <Field label="建议修改">
+          <Field label="建議修改">
             <Textarea
               defaultValue={issue.modified_fields?.suggested_fix ? issue.modified_fields?.suggested_fix : issue.suggested_fix}
               readOnly={issue.status !== IssueStatus.NotReviewed}
@@ -242,7 +242,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
           {
             error && <MessageBar intent="error">
               <MessageBarBody>
-                <MessageBarTitle>错误</MessageBarTitle>
+                <MessageBarTitle>錯誤</MessageBarTitle>
                 { error }
               </MessageBarBody>
             </MessageBar>
@@ -266,7 +266,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
                 disabledFocusable={hitlLoading}
                 onClick={openHitlEditDialog}
               >
-                编辑并执行
+                編輯並執行
               </Button>
               <Button
                 disabledFocusable={dismissing}
@@ -277,17 +277,17 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
                 }
                 onClick={handleDismiss}
               >
-                驳回
+                駁回
               </Button>
             </CardFooter>
           }
           {
             addFeedback && <Card appearance="outline" className={classes.feedback}>
-              <CardHeader image={<PersonFeedback20Filled primaryFill={tokens.colorPaletteDarkOrangeForeground1} />} header="帮助我们改进" />
+              <CardHeader image={<PersonFeedback20Filled primaryFill={tokens.colorPaletteDarkOrangeForeground1} />} header="幫助我們改進" />
               <Field>
                 <Textarea
                   value={feedback?.reason}
-                  placeholder="请说明为什么这个建议不正确，以及应如何改进。"
+                  placeholder="請說明爲什麼這個建議不正確，以及應如何改進。"
                   onChange={e => setFeedback({...feedback, reason: e.target.value})}
                   required
                   rows={4}
@@ -313,8 +313,8 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
           {
             feedbackSubmitted && <MessageBar intent="success">
               <MessageBarBody>
-                <MessageBarTitle>反馈已提交</MessageBarTitle>
-                感谢你的反馈，我们会持续改进审阅效果。
+                <MessageBarTitle>反饋已提交</MessageBarTitle>
+                感謝你的反饋，我們會持續改進審閱效果。
               </MessageBarBody>
             </MessageBar>
           }
@@ -323,17 +323,17 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
       <Dialog open={hitlOpen} onOpenChange={(_, data) => setHitlOpen(data.open)}>
         <DialogSurface>
           <DialogBody>
-            <DialogTitle>HITL 编辑（接受）</DialogTitle>
+            <DialogTitle>HITL 編輯（接受）</DialogTitle>
             <DialogContent>
               {hitlError && (
                 <MessageBar intent="error">
                   <MessageBarBody>
-                    <MessageBarTitle>错误</MessageBarTitle>
+                    <MessageBarTitle>錯誤</MessageBarTitle>
                     {hitlError}
                   </MessageBarBody>
                 </MessageBar>
               )}
-              <Field label="将要执行的工具参数（JSON，可编辑）">
+              <Field label="將要執行的工具參數（JSON，可編輯）">
                 <Textarea
                   value={hitlArgsJson}
                   onChange={(e) => setHitlArgsJson(e.target.value)}
@@ -348,7 +348,7 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
                 icon={hitlLoading ? <Spinner size="tiny" /> : undefined}
                 onClick={() => runHitlDecision({ type: "approve" })}
               >
-                直接执行
+                直接執行
               </Button>
               <Button
                 disabledFocusable={hitlLoading}
@@ -360,11 +360,11 @@ export function IssueCard({ docId, issue, selected, onSelect, onUpdate }: IssueC
                       edited_action: { name: "update_issue", args },
                     });
                   } catch {
-                    setHitlError("JSON 解析失败，请检查格式。");
+                    setHitlError("JSON 解析失敗，請檢查格式。");
                   }
                 }}
               >
-                按编辑执行
+                按編輯執行
               </Button>
               <Button appearance="secondary" onClick={() => setHitlOpen(false)}>
                 取消

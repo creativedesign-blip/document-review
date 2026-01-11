@@ -125,7 +125,7 @@ class Issue(BaseModel):
     status: IssueStatusEnum
     suggested_fix: str
     explanation: str
-    risk_level: Optional[RiskLevel] = None  # 风险等级：高/中/低
+    risk_level: Optional[RiskLevel] = None  # 風險等級：高/中/低
     location: Optional[Location] = None
     review_initiated_by: str
     review_initiated_at_UTC: str
