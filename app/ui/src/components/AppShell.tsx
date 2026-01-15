@@ -215,7 +215,7 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const pageTitle = location.pathname === '/review' ? '智能審核' : '文檔庫'
+  const pageTitle = location.pathname === '/review' ? '智能審核' : '文件庫'
 
   return (
     <div className={classes.shell}>
@@ -228,14 +228,14 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
             <div className={classes.brandInfo}>
               <div className={classes.statusRow}>
                 <span className={classes.statusDot} />
-                <span className={classes.brandTitle}>AI 文檔審查</span>
+                <span className={classes.brandTitle}>AI 文件審查</span>
               </div>
               <span className={classes.brandSub}>智能審核 · 風險識別</span>
             </div>
           </div>
 
           <div className={classes.navSectionTitle}>工作臺</div>
-          <NavItem to="/" label="文檔庫" icon={<DocumentBulletListRegular />} />
+          <NavItem to="/" label="文件庫" icon={<DocumentBulletListRegular />} />
         </aside>
 
         <div className={classes.content}>
@@ -259,7 +259,7 @@ export function AppShell({ mode, onToggleMode, children }: AppShellProps) {
                 className={classes.search}
                 size="small"
                 contentBefore={<SearchRegular />}
-                placeholder="搜索文檔、問題…"
+                placeholder="搜索文件、問題…"
               />
               <Button appearance="subtle" size="small" onClick={onToggleMode}>
                 {mode === 'dark' ? (

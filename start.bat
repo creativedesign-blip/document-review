@@ -47,7 +47,7 @@ echo 🔧 啓動後端服務 (FastAPI)...
 start "Backend - FastAPI" cmd /k "cd /d %~dp0app\api && if exist venv\Scripts\activate.bat (call venv\Scripts\activate.bat) && python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
 echo    ✅ 後端服務已在新窗口啓動
 echo    📍 API 地址: http://localhost:8000
-echo    📍 API 文檔: http://localhost:8000/docs
+echo    📍 API 文件: http://localhost:8000/docs
 echo.
 
 :: 等待後端啓動
@@ -68,7 +68,7 @@ echo.
 echo 📌 服務地址:
 echo    • 前端 UI:  http://localhost:5173
 echo    • 後端 API: http://localhost:8000
-echo    • API 文檔: http://localhost:8000/docs
+echo    • API 文件: http://localhost:8000/docs
 echo.
 echo 📌 關閉服務:
 echo    • 關閉各自的命令行窗口即可停止服務

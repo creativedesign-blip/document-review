@@ -78,7 +78,7 @@ BACKEND_PID=$!
 
 echo -e "${GREEN}   ✅ 後端服務已啓動 (PID: $BACKEND_PID)${NC}"
 echo -e "${WHITE}   📍 API 地址: http://localhost:8000${NC}"
-echo -e "${WHITE}   📍 API 文檔: http://localhost:8000/docs${NC}"
+echo -e "${WHITE}   📍 API 文件: http://localhost:8000/docs${NC}"
 echo ""
 
 cd "$SCRIPT_DIR"
@@ -113,7 +113,7 @@ echo ""
 echo -e "${YELLOW}📌 服務地址:${NC}"
 echo -e "${WHITE}   • 前端 UI:  http://localhost:5173${NC}"
 echo -e "${WHITE}   • 後端 API: http://localhost:8000${NC}"
-echo -e "${WHITE}   • API 文檔: http://localhost:8000/docs${NC}"
+echo -e "${WHITE}   • API 文件: http://localhost:8000/docs${NC}"
 echo ""
 echo -e "${YELLOW}📌 進程 PID:${NC}"
 echo -e "${WHITE}   • 後端: $BACKEND_PID${NC}"

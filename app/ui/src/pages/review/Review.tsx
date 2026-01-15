@@ -408,7 +408,7 @@ function Review() {
       total === 0
         ? { label: '—', tone: 'informative' as const }
         : highOpen > 0
-          ? { label: '需整改', tone: 'danger' as const }
+          ? { label: '待調整', tone: 'danger' as const }
           : processed === total
             ? { label: '可出具結論', tone: 'success' as const }
             : { label: '審核中', tone: 'warning' as const }
@@ -544,7 +544,7 @@ function Review() {
   useEffect(() => {
     const d = searchParams.get('document')
     if (d) setDocId(d)
-    else setPdfLoadError('URL 中未指定文檔')
+    else setPdfLoadError('URL 中未指定文件')
   }, [searchParams])
 
   useEffect(() => {
@@ -698,7 +698,7 @@ function Review() {
           {/* Original PDF */}
           {compareMode && (
             <div className={classes.pdfPane}>
-              <div className={classes.pdfPaneHeader}>原始文檔</div>
+              <div className={classes.pdfPaneHeader}>原始文件</div>
               <div className={classes.pdfWrap}>
                 <Card className={classes.pdfCard}>
                   {pdfLoadError && (
@@ -715,7 +715,7 @@ function Review() {
           )}
           {/* Annotated PDF */}
           <div className={classes.pdfPane}>
-            {compareMode && <div className={classes.pdfPaneHeader}>標註文檔</div>}
+            {compareMode && <div className={classes.pdfPaneHeader}>標註文件</div>}
             <div className={classes.pdfWrap}>
               <Card className={classes.pdfCard}>
                 {pdfLoadError && !compareMode && (

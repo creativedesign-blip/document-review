@@ -93,7 +93,7 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", $backendCmd -Windo
 
 Write-Color "   ✅ 後端服務已在新窗口啓動" "Green"
 Write-Color "   📍 API 地址: http://localhost:8000" "White"
-Write-Color "   📍 API 文檔: http://localhost:8000/docs" "White"
+Write-Color "   📍 API 文件: http://localhost:8000/docs" "White"
 Write-Color ""
 
 # 等待後端啓動
@@ -121,7 +121,7 @@ Write-Color ""
 Write-Color "📌 服務地址:" "Yellow"
 Write-Color "   • 前端 UI:  http://localhost:5173" "White"
 Write-Color "   • 後端 API: http://localhost:8000" "White"
-Write-Color "   • API 文檔: http://localhost:8000/docs" "White"
+Write-Color "   • API 文件: http://localhost:8000/docs" "White"
 Write-Color ""
 Write-Color "📌 關閉服務:" "Yellow"
 Write-Color "   • 關閉各自的 PowerShell 窗口即可停止服務" "White"
